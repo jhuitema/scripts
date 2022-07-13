@@ -113,7 +113,6 @@ async def test_main_case(mocker):
 def cli():
     args = parse_args()
     root_module_file = args.src_dir
-    root_module_name = root_module_file.stem
     root_test_dir = args.test_dir
 
     for submodule_file in root_module_file.rglob("*.py"):
@@ -127,10 +126,8 @@ def cli():
             module_path = module_path.rsplit(".", 1)[0]
 
         print()
-        print(test_dir, module_path)
+        print(f"=== Parsing {module_path} ===")
         for child_node in ast.iter_child_nodes(ast.parse(submodule_file.read_text())):
-            print(child_node)
-
             if isinstance(child_node, ast.ClassDef):
                 found_init = False
                 format_args = {"mod": module_path, "cls": child_node.name}
@@ -207,3 +204,4 @@ def parse_args():
 
 if __name__ == "__main__":
     sys.exit(cli())
+
