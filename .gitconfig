@@ -1,0 +1,14 @@
+[core]
+	editor = notepad
+[help]
+	autocorrect = 1
+[init]
+	defaultBranch = main
+[alias]
+	last = log -1 HEAD
+	amd = commit -a --am -C HEAD
+  com = "!git commit -am \"$* (#`git branch --show-current | cut -d- -f1 | tr -d '\n'`)\" #"
+	fix = commit -a --fixup HEAD
+	clean-branches = !git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 --no-run-if-empty git branch -D
+  d = !git diff origin/`git branch --show-current`
+  dt = !git difftool origin/`git branch --show-current`
