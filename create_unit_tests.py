@@ -24,13 +24,12 @@ from {mod} import {func}
 def test_main_case(mocker):
     """Test the main case of `{func}`."""
     # Preparation
-    
+
     # Execution
     result = {func}()
-    
+
     # Verification
     assert result == ""
-
 '''.lstrip(),
     },
     "async_func": {
@@ -48,13 +47,12 @@ from {mod} import {func}
 async def test_main_case(mocker):
     """Test the main case of `{func}`."""
     # Preparation
-    
+
     # Execution
     result = await {func}()
-    
+
     # Verification
     assert result == ""
-
 '''.lstrip(),
     },
     "meth": {
@@ -79,7 +77,29 @@ def test_main_case(mocker):
 
     # Verification
     assert result == ""
+'''.lstrip(),
+    },
+    "init_meth": {
+        "file_name": "test_{cls}_{meth}.py",
+        "contents": '''
+"""Tests for the `{mod}.{cls}.{meth}` method."""
 
+# Import third-party modules
+import pytest
+
+# Import local modules
+from {mod} import {cls}
+
+
+def test_main_case(mocker):
+    """Test the main case of `{cls}.{meth}`."""
+    # Preparation
+
+    # Execution
+    obj = {cls}()
+
+    # Verification
+    assert obj
 '''.lstrip(),
     },
     "async_meth": {
@@ -104,7 +124,11 @@ async def test_main_case(mocker):
 
     # Verification
     assert result == ""
-
+'''.lstrip(),
+    },
+    "init_py": {
+        "contents": '''
+"""Tests for `{mod}`."""
 '''.lstrip(),
     },
 }
@@ -114,15 +138,26 @@ def cli():
     args = parse_args()
     root_module_file = args.src_dir
     root_test_dir = args.test_dir
+    init_file = root_module_file / "__init__.py"
+    if not init_file.exists():
+        print(f"Creating __init__.py file: {init_file}")
+        init_file.write_text(
+            _TEMPLATES["init_py"]["contents"].format(**{"mod": root_test_dir.name})
+        )
 
     for submodule_file in root_module_file.rglob("*.py"):
-        if any(fnmatch.fnmatch(str(submodule_file), pattern) for pattern in args.ignore_submodules):
+        if any(
+            fnmatch.fnmatch(str(submodule_file), pattern)
+            for pattern in args.ignore_submodules
+        ):
             continue
 
-        test_dir = root_test_dir.joinpath(*submodule_file.parts[:-1]) / submodule_file.stem
+        test_dir = (
+            root_test_dir.joinpath(*submodule_file.parts[1:-1]) / submodule_file.stem
+        )
         module_path = ".".join(submodule_file.with_suffix("").parts)
         if module_path.endswith(".__init__"):
-            test_dir = root_test_dir.joinpath(*submodule_file.parts).parent
+            test_dir = root_test_dir.joinpath(*submodule_file.parts[1:]).parent
             module_path = module_path.rsplit(".", 1)[0]
 
         print()
@@ -135,7 +170,10 @@ def cli():
                     if isinstance(cls_child_node, ast.FunctionDef):
                         meth_format_args = format_args.copy()
                         meth_format_args["meth"] = cls_child_node.name
-                        create_test_file(test_dir, "meth", meth_format_args)
+                        template_type = "meth"
+                        if cls_child_node.name == "__init__":
+                            template_type = "init_meth"
+                        create_test_file(test_dir, template_type, meth_format_args)
 
                     elif isinstance(cls_child_node, ast.AsyncFunctionDef):
                         meth_format_args = format_args.copy()
@@ -151,7 +189,7 @@ def cli():
                 if not found_init:
                     meth_format_args = format_args.copy()
                     meth_format_args["meth"] = "__init__"
-                    create_test_file(test_dir, "meth", meth_format_args)
+                    create_test_file(test_dir, "init_meth", meth_format_args)
 
             elif isinstance(child_node, ast.FunctionDef):
                 format_args = {"mod": module_path, "func": child_node.name}
@@ -160,6 +198,14 @@ def cli():
             elif isinstance(child_node, ast.AsyncFunctionDef):
                 format_args = {"mod": module_path, "func": child_node.name}
                 create_test_file(test_dir, "async_func", format_args)
+
+        # Insert the __init__.py file if it doesn't already exist
+        init_file = test_dir / "__init__.py"
+        if init_file.parent.exists() and not init_file.exists():
+            print(f"Creating __init__.py file: {init_file}")
+            init_file.write_text(
+                _TEMPLATES["init_py"]["contents"].format(**{"mod": module_path})
+            )
 
     return 0
 
@@ -204,4 +250,3 @@ def parse_args():
 
 if __name__ == "__main__":
     sys.exit(cli())
-
