@@ -1,0 +1,263 @@
+{
+    "[graphql]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.detectIndentation": false,
+        "editor.tabSize": 4,
+        "rewrap.autoWrap.enabled": true
+    },
+    "[svelte]": {
+        "editor.defaultFormatter": "svelte.svelte-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "autoDocstring.docstringFormat": "google-notypes",
+    "black-formatter.interpreter": [
+        "C:\\Users\\josh.huitema\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+    ],
+    "black-formatter.showNotifications": "onError",
+    "cSpell.enableFiletypes": [
+        "cypher",
+        "diff",
+        "dockerfile",
+        "dotenv",
+        "git-rebase",
+        "grafana-alloy",
+        "helm",
+        "ignore",
+        "ini",
+        "jinja",
+        "jinja-py",
+        "pip-requirements",
+        "powershell",
+        "shellscript",
+        "sql",
+        "svelte",
+        "toml"
+    ],
+    "cSpell.userWords": [
+        "Cypher",
+        "Huitema",
+        "pypi",
+        "traceback",
+        "venv",
+        "virtualenv",
+        "workfile"
+    ],
+    "diffEditor.experimental.showMoves": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.acceptSuggestionOnEnter": "smart",
+    "editor.quickSuggestions": {
+        "comments": "inline",
+        "strings": "inline"
+    },
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        72,
+        88,
+        100
+    ],
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.excludeGitIgnore": true,
+    "explorer.openEditors.sortOrder": "fullPath",
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "files.associations": {
+        "*.pyx": "python"
+    },
+    "flake8.args": [
+        "--max-line-length",
+        "89"
+    ],
+    "flake8.severity": {
+        "E": "Warning",
+        "F": "Warning",
+        "I": "Hint",
+        "W": "Information"
+    },
+    "folderformatter.extensions": [
+        "js",
+        "ts",
+        "py",
+        "yaml",
+        "yml",
+        "json"
+    ],
+    "git.allowForcePush": true,
+    "git.autoStash": true,
+    "git.closeDiffOnOperation": true,
+    "git.confirmSync": false,
+    "git.defaultCloneDirectory": "C:\\Users\\josh.huitema\\repos\\",
+    "git.enableSmartCommit": true,
+    "git.fetchOnPull": true,
+    "git.ignoreLegacyWarning": true,
+    "git.mergeEditor": true,
+    "git.replaceTagsWhenPull": true,
+    "git.terminalGitEditor": true,
+    "gitlab.customQueries": [
+        {
+            "name": "My Issues",
+            "noItemText": "There is no issue assigned to you.",
+            "scope": "assigned_to_me",
+            "state": "opened",
+            "type": "issues"
+        },
+        {
+            "name": "My MRs",
+            "noItemText": "There is no MR assigned to you.",
+            "scope": "assigned_to_me",
+            "state": "opened",
+            "type": "merge_requests"
+        },
+        {
+            "name": "My Reviews",
+            "noItemText": "There is no MR for you to review.",
+            "reviewer": "<current_user>",
+            "state": "opened",
+            "type": "merge_requests"
+        }
+    ],
+    "gitlab.pipelineGitRemoteName": "https://gitlab.com",
+    "gitlab.showPipelineUpdateNotifications": true,
+    "gitlab.showProjectMergeRequests": false,
+    "indentRainbow.colorOnWhiteSpaceOnly": true,
+    "indentRainbow.colors": [
+        "rgba(0,0,0,0)",
+        "rgba(255,255,64,0.15)",
+        "rgba(127,255,127,0.15)",
+        "rgba(255,127,255,0.15)",
+        "rgba(79,236,236,0.15)"
+    ],
+    "indentRainbow.ignoreErrorLanguages": [
+        "python",
+        "markdown"
+    ],
+    "indentRainbow.indicatorStyle": "light",
+    "isort.args": [
+        "--profile black",
+        "--line-length 88"
+    ],
+    "isort.check": true,
+    "isort.importStrategy": "fromEnvironment",
+    "isort.interpreter": [
+        "C:\\Users\\josh.huitema\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+    ],
+    "isort.showNotifications": "onError",
+    "json.schemaDownload.enable": false,
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.LineByLineComment",
+            "sequence": [
+                "editor.action.insertCursorAtEndOfEachLineSelected",
+                "editor.action.addCommentLine",
+                "expandLineSelection",
+                // "removeSecondaryCursors",
+            ]
+        }
+    ],
+    "mypy-type-checker.severity": {
+        "error": "Information",
+        "note": "Hint"
+    },
+    "outline.showVariables": false,
+    "powershell.integratedConsole.showOnStartup": false,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none",
+        "reportMissingModuleSource": "none"
+    },
+    "python.analysis.fixAll": [
+        "source.convertImportFormat",
+        "source.unusedImports"
+    ],
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.defaultInterpreterPath": "C:\\Users\\josh.huitema\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "python.languageServer": "Pylance",
+    "python.testing.pytestArgs": [
+        "-vv"
+    ],
+    "python.venvFolders": [
+        "${workspaceFolder}/.venv",
+        "${workspaceFolder}/.tox/*"
+    ],
+    "redhat.telemetry.enabled": false,
+    "remote.SSH.remotePlatform": {},
+    "rewrap.wholeComment": false,
+    "search.collapseResults": "auto",
+    "search.exclude": {
+        "**/.tox": true,
+        "**/.venv": true,
+        "**/__pycache__": true
+    },
+    "search.showLineNumbers": true,
+    "security.allowedUNCHosts": [],
+    "security.workspace.trust.untrustedFiles": "open",
+    "svelte.ask-to-enable-ts-plugin": false,
+    "svelte.enable-ts-plugin": true,
+    "terminal.external.linuxExec": "bash",
+    "terminal.integrated.automationProfile.windows": {},
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "terminal.integrated.env.linux": {
+        "EDITOR": "code -w"
+    },
+    "terminal.integrated.env.windows": {
+        "EDITOR": "code -w"
+    },
+    "terminal.integrated.profiles.windows": {},
+    "terminal.integrated.tabs.hideCondition": "never",
+    "terminal.integrated.tabs.showActiveTerminal": "always",
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "enabled",
+        "vs-kubernetes.knownKubeconfigs": [
+            "c:\\Users\\josh.huitema\\.kube\\config",
+            "/etc/rancher/rke2/pxo-rke2.yaml"
+        ],
+        "vs-kubernetes.kubeconfig": "c:\\Users\\josh.huitema\\.kube\\config",
+        "vs-kubernetes.kubectl-path": "",
+        "vs-kubernetes.kubectl-path.windows": "c:\\Users\\josh.huitema\\scripts\\kubectl.exe"
+    },
+    "vscode-kubernetes.log-viewer.autorun": true,
+    "vscode-kubernetes.log-viewer.destination": "Webview",
+    "vscode-kubernetes.log-viewer.follow": true,
+    "vscode-kubernetes.log-viewer.since": -1,
+    "vscode-kubernetes.log-viewer.tail": 100,
+    "vscode-kubernetes.log-viewer.timestamp": true,
+    "vscode-kubernetes.log-viewer.wrap": false,
+    "window.openFoldersInNewWindow": "on",
+    "window.title": "${rootName}${separator}${activeEditorMedium}${dirty}",
+    "workbench.startupEditor": "none",
+    "yaml.customTags": [
+        "!reference sequence"
+    ],
+    "yaml.schemaStore.enable": false,
+    "python.experiments.optInto": [
+        "pythonTestAdapter"
+    ],
+    "testing.automaticallyOpenPeekView": "never",
+    "testing.coverageToolbarEnabled": true,
+    "python.testing.pytestEnabled": true,
+    "chat.commandCenter.enabled": false
+}
